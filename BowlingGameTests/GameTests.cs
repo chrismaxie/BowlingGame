@@ -66,5 +66,31 @@ namespace BowlingGameTests
 
             Assert.AreEqual(26, game.Score());
         }
+
+        [TestMethod]
+        public void TestPerfectGame()
+        {
+            for (var i = 0; i < 12; i++)
+            {
+                game.Roll(10);
+            }
+
+            Assert.AreEqual(300, game.Score());
+        }
+
+        [TestMethod]
+        public void TestMaximumNumberOfRolls()
+        {
+            for (var i = 0; i < 18; i++)
+            {
+                game.Roll(0);
+            }
+
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(10);
+
+            Assert.AreEqual(30, game.Score());
+        }
     }
 }
