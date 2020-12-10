@@ -23,7 +23,7 @@
         /// <returns>the score</returns>
         public int Score()
         {
-            Calculator calculator = Calculator.GetRollCalculator(rolls);
+            Calculator calculator = new Calculator(rolls);
 
             var score = 0;
             calculator.GetScoreForAllRollsInGame(ref score);
