@@ -11,7 +11,8 @@ namespace BowlingGameTests
         [TestInitialize]
         public void Initialize()
         {
-            game = new Game();
+            var calculator = new Calculator();
+            game = new Game(calculator);
         }
 
         [TestMethod]

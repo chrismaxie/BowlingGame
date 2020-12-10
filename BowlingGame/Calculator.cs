@@ -1,25 +1,19 @@
 ﻿namespace BowlingGame
 {
-    class Calculator
+    public class Calculator : ICalculator
     {
-        private int[] rolls;
-
-        public Calculator(int[] rolls)
+        public int GetScoreForAllRollsInGame(int[] rolls)
         {
-            this.rolls = rolls;
-        }
-
-        public void GetScoreForAllRollsInGame(ref int score)
-        {
+            int score = 0;
             int rollIndex = 0;
 
             for (int frame = 0; frame < 10; frame++)
             {
-                if (IsStrike(rollIndex))
+                if (IsStrike(rolls, rollIndex))
                 {
                     score += 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
                 }
-                else if (IsSpare(rollIndex))
+                else if (IsSpare(rolls, rollIndex))
                 {
                     score += 10 + rolls[rollIndex + 2];
                     rollIndex++;
@@ -32,14 +26,16 @@
 
                 rollIndex++;
             }
+
+            return score;
         }
 
-        private bool IsSpare(int rollIndex)
+        private bool IsSpare(int[] rolls, int rollIndex)
         {
             return rolls[rollIndex] + rolls[rollIndex + 1] == 10;
         }
 
-        private bool IsStrike(int rollIndex)
+        private bool IsStrike(int[] rolls, int rollIndex)
         {
             return rolls[rollIndex] == 10;
         }

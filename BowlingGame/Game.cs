@@ -2,6 +2,13 @@
 {
     public class Game
     {
+        public Game(ICalculator calculator)
+        {
+            this.calculator = calculator;
+        }
+
+        private ICalculator calculator;
+
         // initializes rolls array
         public int[] rolls = new int[21];
         // initializes roll
@@ -23,10 +30,7 @@
         /// <returns>the score</returns>
         public int Score()
         {
-            Calculator calculator = new Calculator(rolls);
-
-            var score = 0;
-            calculator.GetScoreForAllRollsInGame(ref score);
+            var score = calculator.GetScoreForAllRollsInGame(rolls);
 
             return score;
         }
