@@ -18,7 +18,9 @@ namespace BowlingGameTests
         public void TestGutterGame()
         {
             for (var i = 0; i < 20; i++)
+            {
                 game.Roll(0);
+            }
 
             Assert.AreEqual(0, game.Score());
         }
@@ -27,7 +29,9 @@ namespace BowlingGameTests
         public void TestAllOnes()
         {
             for (var i = 0; i < 20; i++)
+            {
                 game.Roll(1);
+            }
 
             Assert.AreEqual(20, game.Score());
         }
@@ -40,7 +44,24 @@ namespace BowlingGameTests
             game.Roll(3);
 
             for (var i = 0; i < 17; i++)
+            {
                 game.Roll(0);
+            }
+
+            Assert.AreEqual(16, game.Score());
+        }
+
+        [TestMethod]
+        public void TestOneStrike()
+        {
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(3);
+
+            for (var i = 0; i < 17; i++)
+            {
+                game.Roll(0);
+            }
 
             Assert.AreEqual(16, game.Score());
         }
